@@ -9,6 +9,7 @@ class AnlamListViewModel extends ChangeNotifier {
   Status status = Status.initial;
 
   Future<void> getAnlam(String kelime) async {
+    status = Status.loading;
     List<String> anlam = await DictionaryService().searchWord(kelime);
     anlamViewModel = AnlamViewModel(kelime, anlam);
     status = anlam.isNotEmpty ? Status.success : Status.notfound;
