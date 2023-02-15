@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_dictionary_app/pages/anlam_list_page.dart';
+import 'package:mvvm_dictionary_app/viewmodels/anlam_list_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +28,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.orange,
       ),
-      home: const AnlamListPage(),
+      home: ChangeNotifierProvider(
+        create: (context) => AnlamListViewModel(),
+        child: const AnlamListPage(),
+      ),
     );
   }
 }
